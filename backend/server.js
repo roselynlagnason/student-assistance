@@ -17,7 +17,11 @@ app.use(express.json());
 // =========================================================
 
 // Load Aiven CA certificate
-const caPath = path.resolve(__dirname, process.env.DB_SSL_CA);
+const sslCa = process.env.DB_SSL_CA_CONTENT
+  ? process.env.DB_SSL_CA_CONTENT.replace(/\\n/g, "\n")
+  : fs.readFileSync(
+      path.resolve(__dirname, process.env.DB_SSL_CA)
+    );
 
 const pool = mysql.createPool({
   host: process.env.DB_HOST,
@@ -25,9 +29,8 @@ const pool = mysql.createPool({
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
-
   ssl: {
-    ca: fs.readFileSync(caPath),
+    ca: sslCa,
     rejectUnauthorized: true
   }
 });
