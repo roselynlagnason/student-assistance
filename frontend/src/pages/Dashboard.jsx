@@ -60,7 +60,7 @@ function Dashboard({ goTo, loggedInUser }) {
 
           <div>
             <strong>
-              Student Assistance Portal
+              Student Cash Assistance Portal
             </strong>
 
             <span>
@@ -565,7 +565,7 @@ function Dashboard({ goTo, loggedInUser }) {
 
         <div className="dashboard-footer">
 
-          Student Assistance Portal
+          Student Cash Assistance Portal
           &nbsp;•&nbsp;
           Panglao, Bohol
 

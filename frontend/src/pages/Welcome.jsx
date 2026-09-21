@@ -36,7 +36,7 @@ function Welcome({ goTo }) {
             </div>
 
             <h1>
-              Student Assistance Portal
+              Student Cash Assistance Portal
             </h1>
 
             <div className="welcome-subtitle">
@@ -383,7 +383,7 @@ function Welcome({ goTo }) {
         <footer className="welcome-footer">
 
           <div>
-            Student Assistance Portal
+            Student Cash Assistance Portal
             <span> • </span>
             Panglao, Bohol
           </div>
@@ -395,9 +395,9 @@ function Welcome({ goTo }) {
         </footer>
 
 
-        <div className="demo-notice">
+        {/* <div className="demo-notice">
           Academic Project Demonstration
-        </div>
+        </div> */}
 
       </div>
 
