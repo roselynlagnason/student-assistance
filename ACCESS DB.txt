@@ -1,0 +1,117 @@
+STEP 1 — Open PowerShell
+
+Open PowerShell.
+
+Paste:
+
+mysqlsh
+
+Press Enter.
+
+STEP 2 — Connect to Aiven
+
+When you see:
+
+MySQL  SQL >
+
+paste:
+
+\connect --mysql avnadmin@studentassistance-mysql-student-assistance.a.aivencloud.com:12562
+
+Press Enter.
+
+If it asks for a password, enter your Aiven password.
+
+STEP 3 — Open your database
+
+Paste:
+
+\use studentassistance_db
+
+Press Enter.
+
+STEP 4 — See all tables
+
+Paste:
+
+SHOW TABLES;
+
+Press Enter.
+
+You should see:
+
+users
+STEP 5 — See ALL registered users
+
+Paste:
+
+SELECT id, name, password FROM users ORDER BY id;
+
+Press Enter.
+
+This shows:
+
+ID | NAME | PASSWORD
+
+for all registered accounts.
+
+STEP 6 — See how many users registered
+
+Paste:
+
+SELECT COUNT(*) AS total_users FROM users;
+
+Press Enter.
+
+STEP 7 — See only names
+
+Paste:
+
+SELECT id, name FROM users ORDER BY id;
+STEP 8 — See the newest registered users first
+
+Paste:
+
+SELECT id, name, password FROM users ORDER BY id DESC;
+STEP 9 — Exit when finished
+
+Paste:
+
+\quit
+⭐ THE ONE YOU'LL MOSTLY USE
+
+Every time you want to check your registered users:
+
+mysqlsh
+
+Then:
+
+\connect --mysql avnadmin@studentassistance-mysql-student-assistance.a.aivencloud.com:12562
+
+Then:
+
+\use studentassistance_db
+
+Then:
+
+SELECT id, name, password FROM users ORDER BY id;
+
+Then, when finished:
+
+\quit
+⚠️ If you see ->
+
+Example:
+
+MySQL SQL > SELECT * FROM users
+->
+
+Press:
+
+Ctrl + C
+
+Then enter your command again with the semicolon:
+
+SELECT * FROM users;
+
+Also, keep the passwords in this demo limited to fictional/test accounts; don't use real passwords.

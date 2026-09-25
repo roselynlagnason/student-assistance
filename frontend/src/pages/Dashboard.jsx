@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const API_URL = "http://localhost:5000";
+const API_URL = "https://student-assistance-six.vercel.app";
 
 function Dashboard({ goTo, loggedInUser }) {
   const [form, setForm] = useState({
@@ -131,11 +131,19 @@ function Dashboard({ goTo, loggedInUser }) {
           </span>
 
           <button
-            className="header-logout"
-            onClick={handleLogout}
-          >
-            Log Out
-          </button>
+  className="header-logout"
+  onClick={() => {
+    const confirmed = window.confirm(
+      "Are you sure you want to log out?"
+    );
+
+    if (confirmed) {
+      handleLogout();
+    }
+  }}
+>
+  Log Out
+</button>
 
         </div>
 

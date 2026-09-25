@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const API_URL = "http://localhost:5000";
+const API_URL = "https://student-assistance-six.vercel.app";
 
 function AdminLogin({ goTo, setAdminAuthenticated }) {
   const [password, setPassword] = useState("");
