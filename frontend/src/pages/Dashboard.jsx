@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+const API_URL = "http://localhost:5000";
+
 function Dashboard({ goTo, loggedInUser }) {
   const [form, setForm] = useState({
     studentId: "",
@@ -21,16 +23,68 @@ function Dashboard({ goTo, loggedInUser }) {
     });
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  async function handleSubmit(e) {
+  e.preventDefault();
 
+  if (!loggedInUser?.id) {
+    alert("Your account information could not be found. Please log in again.");
+    goTo("login");
+    return;
+  }
+
+  try {
+    const response = await fetch(
+      `${API_URL}/api/applications`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          userId: loggedInUser.id,
+          studentId: form.studentId,
+          course: form.course,
+          yearLevel: form.yearLevel,
+          school: form.school,
+          contactNumber: form.contactNumber,
+          address: form.address,
+          allowance: form.allowance,
+          expenses: form.expenses,
+          householdIncome: form.householdIncome,
+          reason: form.reason
+        })
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      alert(data.message || "Failed to submit application.");
+      return;
+    }
+
+    // Keep local copy for the existing prank/result page
     localStorage.setItem(
       "studentApplication",
       JSON.stringify(form)
     );
 
+    // Save the database application ID
+    localStorage.setItem(
+      "applicationId",
+      String(data.applicationId)
+    );
+
     goTo("prank");
+
+  } catch (error) {
+    console.error("APPLICATION SUBMIT ERROR:", error);
+
+    alert(
+      "Cannot connect to the server. Make sure the backend is running."
+    );
   }
+}
 
   function handleLogout() {
     localStorage.removeItem("passcheckerLoggedIn");

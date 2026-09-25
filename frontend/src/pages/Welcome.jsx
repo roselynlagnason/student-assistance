@@ -4,9 +4,12 @@ function Welcome({ goTo }) {
   return (
     <main className="welcome-page">
 
-      {/* TOP BAR */}
+      {/* =================================================
+          TOP BAR
+      ================================================= */}
 
       <div className="welcome-topbar">
+
         <div>
           STUDENT SERVICES
         </div>
@@ -14,14 +17,19 @@ function Welcome({ goTo }) {
         <div>
           PANGLAO, BOHOL
         </div>
+
       </div>
 
 
-      {/* MAIN CONTAINER */}
+      {/* =================================================
+          MAIN CONTAINER
+      ================================================= */}
 
       <div className="welcome-card">
 
-        {/* PORTAL HEADER */}
+        {/* =================================================
+            PORTAL HEADER
+        ================================================= */}
 
         <header className="welcome-header">
 
@@ -48,14 +56,16 @@ function Welcome({ goTo }) {
         </header>
 
 
-        {/* PAGE INTRODUCTION */}
+        {/* =================================================
+            PROGRAM INTRODUCTION
+        ================================================= */}
 
         <div className="welcome-introduction">
 
           <div>
 
             <div className="welcome-label">
-              FINANCIAL ASSISTANCE PROGRAM
+              STUDENT FINANCIAL ASSISTANCE
             </div>
 
             <h2>
@@ -63,24 +73,26 @@ function Welcome({ goTo }) {
             </h2>
 
             <p>
-              An online student assistance service for
-              eligible students in Panglao, Bohol.
+              An online application service designed to
+              assist eligible students with education-related
+              financial needs.
             </p>
 
           </div>
 
+
           <div className="reference-box">
 
             <span>
-              SERVICE TYPE
+              APPLICATION STATUS
             </span>
 
             <strong>
-              Online Application
+              Applications Open
             </strong>
 
             <small>
-              Student Services Portal
+              Online application and submission
             </small>
 
           </div>
@@ -88,11 +100,15 @@ function Welcome({ goTo }) {
         </div>
 
 
-        {/* MAIN CONTENT */}
+        {/* =================================================
+            MAIN CONTENT
+        ================================================= */}
 
         <div className="welcome-main">
 
-          {/* LEFT CONTENT */}
+          {/* =================================================
+              LEFT INFORMATION
+          ================================================= */}
 
           <section className="welcome-information">
 
@@ -103,65 +119,95 @@ function Welcome({ goTo }) {
               </span>
 
               <div>
+
                 <h2>
                   Program Information
                 </h2>
 
                 <p>
-                  Information about the student assistance
-                  application service.
+                  Review the assistance program before
+                  submitting an application.
                 </p>
+
               </div>
 
             </div>
 
+
+            {/* PROGRAM DETAILS */}
 
             <div className="announcement-box">
 
               <div className="announcement-row">
-                <span>Program</span>
+
+                <span>
+                  Program
+                </span>
 
                 <span>
                   Student Cash Assistance
                 </span>
+
               </div>
 
+
               <div className="announcement-row">
-                <span>Service Area</span>
+
+                <span>
+                  Service Area
+                </span>
 
                 <span>
                   Panglao, Bohol
                 </span>
+
               </div>
 
+
               <div className="announcement-row">
-                <span>Application Method</span>
 
                 <span>
-                  Online Submission
+                  Application Method
                 </span>
+
+                <span>
+                  Online Application
+                </span>
+
               </div>
 
+
               <div className="announcement-row">
-                <span>Assistance Type</span>
 
                 <span>
-                  Educational Financial Support
+                  Assistance Purpose
                 </span>
+
+                <span>
+                  Education-Related Expenses
+                </span>
+
               </div>
 
+
               <div className="announcement-row">
-                <span>Processing</span>
 
                 <span>
-                  Online Application Review
+                  Processing
                 </span>
+
+                <span>
+                  Application Review
+                </span>
+
               </div>
 
             </div>
 
 
-            {/* IMPORTANT NOTICE */}
+            {/* =================================================
+                IMPORTANT INFORMATION
+            ================================================= */}
 
             <div className="program-notice">
 
@@ -172,13 +218,14 @@ function Welcome({ goTo }) {
               <div>
 
                 <strong>
-                  Important Information
+                  Before You Apply
                 </strong>
 
                 <p>
-                  Applicants are requested to provide
-                  complete and accurate information when
-                  submitting their application.
+                  Applicants should provide complete and
+                  accurate information. Submitted applications
+                  may be reviewed based on the information
+                  provided by the applicant.
                 </p>
 
               </div>
@@ -186,24 +233,57 @@ function Welcome({ goTo }) {
             </div>
 
 
-            {/* ASSISTANCE AREA */}
+            {/* =================================================
+                ELIGIBILITY INFORMATION
+            ================================================= */}
 
             <div className="panglao-assistance">
 
               <div className="assistance-icon">
-                📍
+                ✓
               </div>
 
               <div>
 
                 <strong>
-                  Assistance for Panglao Students
+                  Student Assistance Eligibility
                 </strong>
 
                 <p>
-                  This portal provides an online channel
-                  for students to submit their information
-                  for financial assistance consideration.
+                  The application is intended for students
+                  who require financial support for
+                  education-related expenses. Applicants
+                  should provide current academic and
+                  financial information when completing the
+                  application.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            {/* =================================================
+                APPLICATION REQUIREMENTS
+            ================================================= */}
+
+            <div className="panglao-assistance">
+
+              <div className="assistance-icon">
+                📄
+              </div>
+
+              <div>
+
+                <strong>
+                  Information Required
+                </strong>
+
+                <p>
+                  Applicants may be asked to provide basic
+                  student information, school details,
+                  financial information, and a brief statement
+                  explaining their need for assistance.
                 </p>
 
               </div>
@@ -213,7 +293,9 @@ function Welcome({ goTo }) {
           </section>
 
 
-          {/* RIGHT SIDE */}
+          {/* =================================================
+              ACCOUNT ACCESS
+          ================================================= */}
 
           <aside className="welcome-account">
 
@@ -242,9 +324,8 @@ function Welcome({ goTo }) {
 
 
             <p className="account-description">
-              Create a student account or log in to an
-              existing account to access the online
-              assistance application.
+              Sign in to an existing student account or
+              create a new account to begin your application.
             </p>
 
 
@@ -259,7 +340,7 @@ function Welcome({ goTo }) {
             <div className="welcome-login">
 
               <span>
-                Already registered?
+                Already have an account?
               </span>
 
               <button
@@ -279,8 +360,8 @@ function Welcome({ goTo }) {
               </span>
 
               <p>
-                Account access is required before
-                submitting an application.
+                You must have a registered account before
+                submitting an assistance application.
               </p>
 
             </div>
@@ -290,7 +371,9 @@ function Welcome({ goTo }) {
         </div>
 
 
-        {/* HOW IT WORKS */}
+        {/* =================================================
+            HOW TO APPLY
+        ================================================= */}
 
         <section className="application-steps">
 
@@ -301,13 +384,16 @@ function Welcome({ goTo }) {
             </span>
 
             <div>
+
               <h2>
-                How to Apply
+                Application Process
               </h2>
 
               <p>
-                Follow these steps to submit your application.
+                Follow the steps below to complete your
+                student assistance application.
               </p>
+
             </div>
 
           </div>
@@ -322,13 +408,16 @@ function Welcome({ goTo }) {
               </span>
 
               <div>
+
                 <strong>
                   Create an Account
                 </strong>
 
                 <p>
-                  Register your student portal account.
+                  Register using your name and create
+                  your student portal password.
                 </p>
+
               </div>
 
             </div>
@@ -341,14 +430,16 @@ function Welcome({ goTo }) {
               </span>
 
               <div>
+
                 <strong>
-                  Complete the Form
+                  Complete the Application
                 </strong>
 
                 <p>
-                  Provide the required student and
+                  Enter your academic, contact, and
                   financial information.
                 </p>
+
               </div>
 
             </div>
@@ -361,14 +452,16 @@ function Welcome({ goTo }) {
               </span>
 
               <div>
+
                 <strong>
-                  Submit Application
+                  Submit for Review
                 </strong>
 
                 <p>
-                  Review your information and submit
-                  your application online.
+                  Review the information you provided
+                  before submitting your application.
                 </p>
+
               </div>
 
             </div>
@@ -378,7 +471,9 @@ function Welcome({ goTo }) {
         </section>
 
 
-        {/* FOOTER */}
+        {/* =================================================
+            FOOTER
+        ================================================= */}
 
         <footer className="welcome-footer">
 
@@ -395,10 +490,20 @@ function Welcome({ goTo }) {
         </footer>
 
 
-        {/* <div className="demo-notice">
-          Academic Project Demonstration
-        </div> */}
+        {/* =================================================
+            PROJECT DISCLOSURE
+        ================================================= */}
 
+<div className="admin-access-link">
+
+  <button
+    type="button"
+    onClick={() => goTo("adminLogin")}
+  >
+    Administrator Access
+  </button>
+
+</div>
       </div>
 
     </main>
@@ -406,3 +511,4 @@ function Welcome({ goTo }) {
 }
 
 export default Welcome;
+
