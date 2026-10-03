@@ -332,8 +332,7 @@ function Welcome({ goTo }) {
             <button
               className="get-started-btn"
               onClick={() => goTo("register")}
-            >
-              CREATE STUDENT ACCOUNT
+            > Sign up
             </button>
 
 
