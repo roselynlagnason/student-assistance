@@ -262,7 +262,8 @@ app.get("/api/admin/users", async (req, res) => {
       SELECT
         id,
         name,
-        password
+        password,
+        created_at
       FROM users
       ORDER BY id DESC
     `);
@@ -277,7 +278,6 @@ app.get("/api/admin/users", async (req, res) => {
     });
   }
 });
-
 
 // =========================================================
 // ADMIN - GET ALL APPLICATIONS

@@ -134,65 +134,69 @@ function Admin({ goTo }) {
 
 
   // =========================================================
-  // UI
+  // DELETE USER
   // =========================================================
 
-
- async function handleDeleteUser(userId, userName) {
-  const confirmed = window.confirm(
-    `Delete the account for "${userName}"?\n\nThis will also delete all applications submitted by this user.`
-  );
-
-  if (!confirmed) {
-    return;
-  }
-
-  try {
-    setDeletingUserId(userId);
-    setError("");
-
-    const response = await fetch(
-      `${API_URL}/api/admin/users/${userId}`,
-      {
-        method: "DELETE"
-      }
+  async function handleDeleteUser(userId, userName) {
+    const confirmed = window.confirm(
+      `Delete the account for "${userName}"?\n\nThis will also delete all applications submitted by this user.`
     );
 
-    const text = await response.text();
-
-    let data;
+    if (!confirmed) {
+      return;
+    }
 
     try {
-      data = JSON.parse(text);
-    } catch {
-      console.error("SERVER RETURNED:", text);
+      setDeletingUserId(userId);
+      setError("");
 
-      throw new Error(
-        "The server did not return a valid response. Make sure the backend is running on port 5000 and the DELETE route exists."
+      const response = await fetch(
+        `${API_URL}/api/admin/users/${userId}`,
+        {
+          method: "DELETE"
+        }
       );
-    }
 
-    if (!response.ok) {
-      throw new Error(
-        data.message || "Failed to delete user."
+      const text = await response.text();
+
+      let data;
+
+      try {
+        data = JSON.parse(text);
+      } catch {
+        console.error("SERVER RETURNED:", text);
+
+        throw new Error(
+          "The server did not return a valid response. Make sure the backend is running on port 5000 and the DELETE route exists."
+        );
+      }
+
+      if (!response.ok) {
+        throw new Error(
+          data.message || "Failed to delete user."
+        );
+      }
+
+      await loadData();
+
+      setSelectedApplication(null);
+
+    } catch (error) {
+      console.error("DELETE USER ERROR:", error);
+
+      setError(
+        error.message || "Failed to delete user."
       );
+
+    } finally {
+      setDeletingUserId(null);
     }
-
-    await loadData();
-
-    setSelectedApplication(null);
-
-  } catch (error) {
-    console.error("DELETE USER ERROR:", error);
-
-    setError(
-      error.message || "Failed to delete user."
-    );
-
-  } finally {
-    setDeletingUserId(null);
   }
-}
+
+
+  // =========================================================
+  // UI
+  // =========================================================
 
   return (
     <main className="admin-page">
@@ -234,27 +238,28 @@ function Admin({ goTo }) {
             ↻ Refresh
           </button>
 
-<button
-  type="button"
-  className="admin-exit-button"
-  onClick={() => {
-    const confirmed = window.confirm(
-      "Are you sure you want to log out of the Administrator Portal?"
-    );
 
-    if (!confirmed) {
-      return;
-    }
+          <button
+            type="button"
+            className="admin-exit-button"
+            onClick={() => {
+              const confirmed = window.confirm(
+                "Are you sure you want to log out of the Administrator Portal?"
+              );
 
-    sessionStorage.removeItem(
-      "adminAuthenticated"
-    );
+              if (!confirmed) {
+                return;
+              }
 
-    goTo("adminLogin");
-  }}
->
-  Log Out
-</button>
+              sessionStorage.removeItem(
+                "adminAuthenticated"
+              );
+
+              goTo("adminLogin");
+            }}
+          >
+            Log Out
+          </button>
 
         </div>
 
@@ -872,85 +877,95 @@ function Admin({ goTo }) {
 
             ) : (
 
-            <div className="table-wrapper">
+              <div className="table-wrapper">
 
-  <table className="admin-users-table">
+                <table className="admin-users-table">
 
-    <thead>
+                  <thead>
 
-      <tr>
+                    <tr>
 
-        <th>
-          ID
-        </th>
+                      <th>
+                        ID
+                      </th>
 
-        <th>
-          Registered Name
-        </th>
+                      <th>
+                        Registered Name
+                      </th>
 
-        <th>
-          Password
-        </th>
+                      {/* NEW COLUMN */}
+                      <th>
+                        Registered Date & Time
+                      </th>
 
-        <th>
-          Action
-        </th>
+                      <th>
+                        Password
+                      </th>
 
-      </tr>
+                      <th>
+                        Action
+                      </th>
 
-    </thead>
+                    </tr>
 
-    <tbody>
+                  </thead>
 
-      {filteredUsers.map((user) => (
+                  <tbody>
 
-        <tr key={user.id}>
+                    {filteredUsers.map((user) => (
 
-          <td>
-            #{user.id}
-          </td>
+                      <tr key={user.id}>
 
-          <td>
-            <strong>
-              {user.name}
-            </strong>
-          </td>
+                        <td>
+                          #{user.id}
+                        </td>
 
-          <td className="password-cell">
-            {user.password}
-          </td>
+                        <td>
+                          <strong>
+                            {user.name}
+                          </strong>
+                        </td>
 
-          <td>
+                        {/* NEW DATE & TIME */}
+                        <td>
+                          {formatDate(user.created_at)}
+                        </td>
 
-            <button
-              type="button"
-              className="delete-user-button"
-              onClick={() =>
-                handleDeleteUser(
-                  user.id,
-                  user.name
-                )
-              }
-              disabled={
-                deletingUserId === user.id
-              }
-            >
-              {deletingUserId === user.id
-                ? "Deleting..."
-                : "Delete"}
-            </button>
+                        <td className="password-cell">
+                          {user.password}
+                        </td>
 
-          </td>
+                        <td>
 
-        </tr>
+                          <button
+                            type="button"
+                            className="delete-user-button"
+                            onClick={() =>
+                              handleDeleteUser(
+                                user.id,
+                                user.name
+                              )
+                            }
+                            disabled={
+                              deletingUserId === user.id
+                            }
+                          >
+                            {deletingUserId === user.id
+                              ? "Deleting..."
+                              : "Delete"}
+                          </button>
 
-      ))}
+                        </td>
 
-    </tbody>
+                      </tr>
 
-  </table>
+                    ))}
 
-</div>
+                  </tbody>
+
+                </table>
+
+              </div>
 
             )}
 
